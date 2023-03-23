@@ -7,8 +7,8 @@ const rootDomElement = document.getElementById("root");
 const rootReactElement = ReactDOM.createRoot(rootDomElement);
 
 rootReactElement.render(
-  <React.StrictMode>
+
     <App />
-  </React.StrictMode>
+
 
 )

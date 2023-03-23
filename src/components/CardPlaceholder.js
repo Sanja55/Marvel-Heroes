@@ -1,8 +1,9 @@
 function CardPlaceholder () {
   
   return (
+
     <div className="card card--placeholder">
-      <p>Card Placeholder</p>
+      <h3>Waitin for data...</h3>
       
     </div>
   )
