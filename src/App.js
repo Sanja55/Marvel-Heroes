@@ -4,12 +4,14 @@ import Search from "./components/Search";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
+import MyTeam from "./components/MyTeam";
 
 
 function App() {
 
   const [marvelHeroes, setMarvelHeroes] = useState([]);
-
+  const [myTeam, setMyTeam] = useState([]);
+  
   const fetchCharacters = () => {
 
     const url = "http://gateway.marvel.com/v1/public/characters?apikey=874ed89f80bf914e4fe26dfb1bb5ca24";
@@ -56,6 +58,25 @@ function App() {
 
   }
 
+  const addHeroToMyTeam = (hero) => {
+
+    let alreadyExists = false;
+    
+    myTeam.forEach((item) => {
+      
+      if(hero.id === item.id) {
+        alreadyExists = true;
+      }
+
+    });
+
+    if (alreadyExists === false) {
+      setMyTeam([...myTeam, hero]);
+    } else {
+      window.alert("You cannot add the same character two times!");
+    }
+  }
+
   useEffect(() => {
 
     //this would be invoked just once, when the component mounts
@@ -69,9 +90,14 @@ function App() {
   return (
 
     <div>
+      
       <Header onClick={fetchCharacters}/>
       <Search fetchSearchResults={fetchSearchResults}/>
-      <MarvelHeroesPage marvelHeroes={marvelHeroes} />
+      
+      <div className="main-content">
+        <MarvelHeroesPage marvelHeroes={marvelHeroes} addHeroToMyTeam={addHeroToMyTeam} />
+        <MyTeam myTeam={myTeam}/>
+      </div>
     </div>
   )
 }

@@ -27,6 +27,7 @@ function Search(props) {
 
     <div className="search-bar">
 
+      <div className="shadow"></div>
       <input
         type="text"
         placeholder="Search..."

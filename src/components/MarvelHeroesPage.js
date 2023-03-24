@@ -29,7 +29,7 @@ function MarvelHeroesPage(props) {
           marvelHeroes.length > 0 && 
             marvelHeroes.map((item) => {
               return (
-                <MarvelHeroesCard key={item.id} item={item}/>
+                <MarvelHeroesCard key={item.id} item={item} addHeroToMyTeam={props.addHeroToMyTeam}/>
               )
             })
         }
